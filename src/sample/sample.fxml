@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<children>
+    <SplitPane dividerPositions="0.07393715341959335" focusTraversable="false" layoutY="-7.0" orientation="VERTICAL" prefHeight="530.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+            <AnchorPane fx:id="contrlpane" maxHeight="32.0" minHeight="32.0" minWidth="0.0" prefHeight="32.0" prefWidth="500.0" scaleShape="false" SplitPane.resizableWithParent="false">
+                <children>
+                    <TextField fx:id="numberfield" layoutY="7.0" onKeyReleased="#handlekeyreleased" prefHeight="25.0" prefWidth="50.0" promptText="Lines" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="7.0" />
+                    <ToggleButton fx:id="aniBut" layoutX="407.0" layoutY="7.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="91.0" text="Animate" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="7.0" />
+                    <Button layoutX="335.0" layoutY="7.0" mnemonicParsing="false" onAction="#nextFrame" text="next " AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="121.0" AnchorPane.topAnchor="7.0" />
+                    <Button layoutX="274.0" layoutY="7.0" mnemonicParsing="false" onAction="#prevoisFrame" text="previous" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="163.0" AnchorPane.topAnchor="7.0" />
+                    <Slider fx:id="slider" blockIncrement="1.0" layoutX="128.0" layoutY="13.0" max="101.0" minorTickCount="1" snapToTicks="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="118.0" AnchorPane.topAnchor="13.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Slider>
+                    <Label layoutX="65.0" layoutY="11.0" text="Frame:" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="11.0" />
+                    <Label fx:id="label" layoutX="104.0" layoutY="11.0" text="0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="12.0" />
+                </children>
+            </AnchorPane>
+            <AnchorPane fx:id="drawpane" minHeight="0.0" minWidth="0.0" />
+        </items>
+    </SplitPane>
+</children>
+</AnchorPane>

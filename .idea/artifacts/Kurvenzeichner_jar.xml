@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Kurvenzeichner:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Kurvenzeichner_jar</output-path>
+    <root id="archive" name="Kurvenzeichner.jar">
+      <element id="module-output" name="Kurvenzeichner" />
+    </root>
+  </artifact>
+</component>

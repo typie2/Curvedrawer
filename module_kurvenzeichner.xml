@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_kurvenzeichner" default="compile.module.kurvenzeichner">
+  <dirname property="module.kurvenzeichner.basedir" file="${ant.file.module_kurvenzeichner}"/>
+  
+  <property name="module.jdk.home.kurvenzeichner" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.kurvenzeichner" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.kurvenzeichner" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.kurvenzeichner" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="kurvenzeichner.output.dir" value="${module.kurvenzeichner.basedir}/out/production/Kurvenzeichner"/>
+  <property name="kurvenzeichner.testoutput.dir" value="${module.kurvenzeichner.basedir}/out/test/Kurvenzeichner"/>
+  
+  <path id="kurvenzeichner.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="kurvenzeichner.module.production.classpath">
+    <path refid="${module.jdk.classpath.kurvenzeichner}"/>
+  </path>
+  
+  <path id="kurvenzeichner.runtime.production.module.classpath">
+    <pathelement location="${kurvenzeichner.output.dir}"/>
+  </path>
+  
+  <path id="kurvenzeichner.module.classpath">
+    <path refid="${module.jdk.classpath.kurvenzeichner}"/>
+    <pathelement location="${kurvenzeichner.output.dir}"/>
+  </path>
+  
+  <path id="kurvenzeichner.runtime.module.classpath">
+    <pathelement location="${kurvenzeichner.testoutput.dir}"/>
+    <pathelement location="${kurvenzeichner.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.kurvenzeichner">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.kurvenzeichner">
+    <patternset refid="excluded.from.module.kurvenzeichner"/>
+  </patternset>
+  
+  <path id="kurvenzeichner.module.sourcepath">
+    <dirset dir="${module.kurvenzeichner.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.kurvenzeichner" depends="compile.module.kurvenzeichner.production,compile.module.kurvenzeichner.tests" description="Compile module Kurvenzeichner"/>
+  
+  <target name="compile.module.kurvenzeichner.production" depends="register.custom.compilers" description="Compile module Kurvenzeichner; production classes">
+    <mkdir dir="${kurvenzeichner.output.dir}"/>
+    <javac2 destdir="${kurvenzeichner.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.kurvenzeichner}/javac">
+      <compilerarg line="${compiler.args.kurvenzeichner}"/>
+      <bootclasspath refid="kurvenzeichner.module.bootclasspath"/>
+      <classpath refid="kurvenzeichner.module.production.classpath"/>
+      <src refid="kurvenzeichner.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.kurvenzeichner"/>
+    </javac2>
+    
+    <copy todir="${kurvenzeichner.output.dir}">
+      <fileset dir="${module.kurvenzeichner.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.kurvenzeichner.tests" depends="register.custom.compilers,compile.module.kurvenzeichner.production" description="compile module Kurvenzeichner; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.kurvenzeichner" description="cleanup module">
+    <delete dir="${kurvenzeichner.output.dir}"/>
+    <delete dir="${kurvenzeichner.testoutput.dir}"/>
+  </target>
+</project>
